@@ -1,0 +1,87 @@
+
+0. Estructura
+
+Se define una estructura de 16 productos, cada uno con los siguientes campos
+
+Direccion del comprador
+Estado
+Fecha pago
+Fecha envio
+
+
+1. constructor
+
+Guardar direccion del Owner
+Owner deposita, 5 ETH x 16 Productos= 80 ETH como garantia por los 16 productos
+
+2. Compra del producto
+
+Se valida que este dentro del catalogo de productos
+Se valida que no ha sido comprado anteriormente
+Se valida que deposite 6 ETH en el contrto inteligente
+Comprador deposita 5 ETH como garantia de 1 producto
+Comprador deposita 1 ETH por compra del producto
+Cambia estado de producto a Pagado
+Se guarda la direccion del comprador
+Se guarda fecha de pago
+
+3. Vendedor despacha producto
+
+Se valida que este dentro del catalogo de productos
+Se valida que esta pagado el producto
+Vendedor cambia estado de producto a enviado
+Se guarda fecha de envio
+
+4. Comprador confirma recepcion del producto
+
+Se valida que este dentro del catalogo de productos
+Se valida que sea el comprador quien confirma
+Se valida que el producto esta en estado enviado 
+Comprador coloca estado en recibido
+Se retornan 6 ETH al vendedor
+Se retornan 5 ETH al comprador
+
+5. Resolver conflicto
+
+Se valida que este dentro del catalogo de productos
+Se valida que sea el comprador o venedor quien solicita la accion
+Si estado es = a pagado y tiempo despues de pagado >1 minuto, entonces 
+	Se retornan 6 ETH a comprador
+	Se queman 5 ETH al venedor
+	Se coloca direccion del comprador en Cero
+
+Si estado es = a enviado y tiempo despues de enviado >1 minuto, entonces
+	Se retornan 5 ETH al vendedor
+	Se queman 5 ETH al comprador
+
+
+
+Ayudas
+
+Booleans
+bool: The possible values are constants true and false.
+
+Operators:
+
+! (logical negation)
+&& (logical conjunction, “and”)
+|| (logical disjunction, “or”)
+== (equality)
+!= (inequality)
+
+The if...else if... statement is an advanced form of if...else that allows Solidity to make a correct decision out of several conditions.
+
+Syntax
+The syntax of an if-else-if statement is as follows −
+
+if (expression 1) {
+   Statement(s) to be executed if expression 1 is true
+} else if (expression 2) {
+   Statement(s) to be executed if expression 2 is true
+} else if (expression 3) {
+   Statement(s) to be executed if expression 3 is true
+} else {
+   Statement(s) to be executed if no expression is true
+}
+
+
